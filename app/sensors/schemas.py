@@ -1,18 +1,19 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class Sensor(BaseModel):
     id: int
     name: str
-    latitude: float
-    longitude: float
+    latitude: float #MongoDB
+    longitude: float #MongoDB
     joined_at: str
     last_seen: str
-    type: str
-    mac_address: str
+    type: str #MongoDB
+    mac_address: str #MongoDB
     battery_level: float
-    temperature: float
-    humidity: float
-    velocity: float
+    temperature: Optional[float]
+    humidity: Optional[float]
+    velocity: Optional[float]
     
     
     class Config:
@@ -30,8 +31,8 @@ class SensorCreate(BaseModel):
     firmware_version: str
 
 class SensorData(BaseModel):
-    velocity: float
-    temperature: float
-    humidity: float
+    velocity: Optional[float]
+    temperature: Optional[float]
+    humidity: Optional[float]
     battery_level: float
     last_seen: str
